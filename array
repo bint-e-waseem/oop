@@ -1,0 +1,78 @@
+#include <iostream>
+using namespace std;
+
+
+double getMin(double* arr, int size);
+double getMax(double* arr, int size);
+double getAverage(double* arr, int size);
+
+int main() {
+    int numScores;
+
+   
+    cout << "Enter the number of test scores you want to enter: ";
+    cin >> numScores;
+
+    
+    if (numScores <= 0) {
+        cout << "Error: Number of scores must be greater than 0." << endl;
+        return 1;
+    }
+
+double* scores = new double[numScores];
+    cout << "Enter " << numScores << " test scores:" << endl;
+    for (int i = 0; i < numScores; i++) {
+        cout << "Score " << (i + 1) << ": ";
+        cin >> *(scores + i);
+    }
+
+   
+    double minScore = getMin(scores, numScores);
+    double maxScore = getMax(scores, numScores);
+    double avgScore = getAverage(scores, numScores);
+
+    cout << "\n--- Results ---" << endl;
+    cout << "Minimum Score: " << minScore << endl;
+    cout << "Maximum Score: " << maxScore << endl;
+    cout << "Average Score: " << avgScore << endl;
+
+   
+    delete[] scores;
+    scores = nullptr; // Good practice to avoid dangling pointer
+
+    return 0;
+}
+
+// Function to return the minimum element
+double getMin(double* arr, int size) {
+    double minVal = *arr; // Initialize with the first element
+    for (int i = 1; i < size; i++) {
+        // Using pointer notation to access elements
+        if (*(arr + i) < minVal) {
+            minVal = *(arr + i);
+        }
+    }
+    return minVal;
+}
+
+
+double getMax(double* arr, int size) {
+    double maxVal = *arr; // Initialize with the first element
+    for (int i = 1; i < size; i++) {
+        // Using pointer notation to access elements
+        if (*(arr + i) > maxVal) {
+            maxVal = *(arr + i);
+        }
+    }
+    return maxVal;
+}
+
+
+double getAverage(double* arr, int size) {
+    double sum = 0;
+    for (int i = 0; i < size; i++) {
+        // Using pointer notation to access elements
+        sum += *(arr + i);
+    }
+    return sum / size;
+}
