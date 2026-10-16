@@ -1,0 +1,89 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Date
+{
+private:
+    int month;
+    int day;
+    int year;
+
+public:
+    
+    Date(int m, int d, int y)
+    {
+        month = m;
+        day = d;
+        year = y;
+    }
+
+    
+    void displayFormat1() const
+    {
+        cout << month << "/" << day << "/" << year << endl;
+    }
+
+    
+    void displayFormat2() const
+    {
+        string months[] = {
+            "January", "February", "March", "April",
+            "May", "June", "July", "August",
+            "September", "October", "November", "December"
+        };
+
+        cout << months[month - 1] << " "
+             << day << ", " << year << endl;
+    }
+
+    
+    void displayFormat3() const
+    {
+        string months[] = {
+            "January", "February", "March", "April",
+            "May", "June", "July", "August",
+            "September", "October", "November", "December"
+        };
+
+        cout << day << " " << months[month - 1]
+             << " " << year << endl;
+    }
+};
+
+int main()
+{
+    int month, day, year;
+
+    cout << "Enter month (1-12): ";
+    cin >> month;
+
+    while (month < 1 || month > 12)
+    {
+        cout << "Invalid month! Enter again (1-12): ";
+        cin >> month;
+    }
+
+    cout << "Enter day (1-31): ";
+    cin >> day;
+
+    while (day < 1 || day > 31)
+    {
+        cout << "Invalid day! Enter again (1-31): ";
+        cin >> day;
+    }
+
+    cout << "Enter year: ";
+    cin >> year;
+
+    Date date1(month, day, year);
+
+    cout << "\nDate in three formats:\n";
+
+    date1.displayFormat1();
+    date1.displayFormat2();
+    date1.displayFormat3();
+
+    return 0;
+}
