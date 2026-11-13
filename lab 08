@@ -1,3 +1,15 @@
+//A library wants to maintain information about its books using an object-oriented approach.&#x20;
+
+//Develop a C++ class named **Book** that stores the **title**, **author name**, and **price** of a book as private data members
+//. Implement both the **default constructor** and the **copy constructor** for the class. Also, create getter, setter for private data-members
+//and a member function named **displayBookDetails()** that displays all book information in a readable format.
+
+//In the **main()** function, dynamically allocate memory for a Book object using a pointer, allow
+//the user to enter the book details through the pointer, and display the stored information using
+//the same pointer. Additionally, create a second Book object using the **copy constructor** and display its details to verify that the
+//copying process has been performed correctly.
+//Finally, release the dynamically allocated memory before program termination.*/
+
 
 #include <iostream>
 #include <string>
