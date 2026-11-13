@@ -1,0 +1,101 @@
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+private:
+    string title;
+    string authorName;
+    float price;
+
+public:
+    
+    Book() {
+        title = "Not Set";
+        authorName = "Not Set";
+        price = 0.0;
+    }
+
+    
+    Book(const Book &b) {
+        title = b.title;
+        authorName = b.authorName;
+        price = b.price;
+    }
+
+   
+    void setTitle(string t) {
+        title = t;
+    }
+
+    void setAuthorName(string a) {
+        authorName = a;
+    }
+
+    void setPrice(float p) {
+        price = p;
+    }
+
+    
+    string getTitle() {
+        return title;
+    }
+
+    string getAuthorName() {
+        return authorName;
+    }
+
+    float getPrice() {
+        return price;
+    }
+
+    
+    void displayBookDetails() {
+        cout << "\n--- Book Details ---" << endl;
+        cout << "Title: " << title << endl;
+        cout << "Author Name: " << authorName << endl;
+        cout << "Price: " << price << endl;
+    }
+};
+
+int main() {
+
+    
+    Book *ptr = new Book();
+
+    string title, author;
+    float price;
+
+    
+    cout << "Enter Book Title: ";
+    getline(cin, title);
+
+    cout << "Enter Author Name: ";
+    getline(cin, author);
+
+    cout << "Enter Book Price: ";
+    cin >> price;
+
+    
+    ptr->setTitle(title);
+    ptr->setAuthorName(author);
+    ptr->setPrice(price);
+
+    
+    cout << "\nOriginal Book:";
+    ptr->displayBookDetails();
+
+    
+    Book book2(*ptr);
+
+    
+    cout << "\nCopied Book:";
+    book2.displayBookDetails();
+
+    
+    delete ptr;
+    ptr = nullptr;
+
+    return 0;
+}
